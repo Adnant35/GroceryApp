@@ -1,0 +1,10 @@
+
+${AnsiColor.BLUE}__  ___   ______    __           ___      ____    ____  ${AnsiColor.GREEN}     _______.  ______    _______ .___________.
+${AnsiColor.BLUE}|  |/  /  /  __  \  |  |         /   \     \   \  /   / ${AnsiColor.GREEN}    /       | /  __  \  |   ____||           |
+${AnsiColor.BLUE}|  '  /  |  |  |  | |  |        /  ^  \     \   \/   /  ${AnsiColor.GREEN}   |   (----`|  |  |  | |  |__   `---|  |----`
+${AnsiColor.BLUE}|    <   |  |  |  | |  |       /  /_\  \     \_    _/   ${AnsiColor.GREEN}    \   \    |  |  |  | |   __|      |  |
+${AnsiColor.BLUE}|  .  \  |  `--'  | |  `----. /  _____  \      |  |     ${AnsiColor.GREEN}.----)   |   |  `--'  | |  |         |  |
+${AnsiColor.BLUE}|__|\__\  \______/  |_______|/__/     \__\     |__|     ${AnsiColor.GREEN}|_______/     \______/  |__|         |__|
+
+${AnsiColor.BRIGHT_BLUE}:: Manav 🤓  :: Running Spring Boot ${spring-boot.version} ::
+:: https://www.kolaysoft.com.tr ::${AnsiColor.DEFAULT}
