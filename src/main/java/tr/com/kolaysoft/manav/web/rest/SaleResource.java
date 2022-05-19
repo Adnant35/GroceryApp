@@ -1,16 +1,21 @@
 package tr.com.kolaysoft.manav.web.rest;
 
+import java.math.BigDecimal;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import javax.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tr.com.kolaysoft.manav.repository.SaleRepository;
 import tr.com.kolaysoft.manav.service.SaleService;
+import tr.com.kolaysoft.manav.service.dto.ProductSalePurchaseDTO;
 import tr.com.kolaysoft.manav.service.dto.SaleDTO;
+import tr.com.kolaysoft.manav.service.dto.StockDTO;
+import tr.com.kolaysoft.manav.service.StockService;
 import tr.com.kolaysoft.manav.web.rest.errors.BadRequestAlertException;
 
 /**
@@ -23,10 +28,40 @@ public class SaleResource {
     private final SaleService saleService;
 
     private final SaleRepository saleRepository;
+    private final StockService stockService;
 
-    public SaleResource(SaleService saleService, SaleRepository saleRepository) {
+    public SaleResource(SaleService saleService, SaleRepository saleRepository,StockService stockService) {
         this.saleService = saleService;
         this.saleRepository = saleRepository;
+        this.stockService=stockService;
+    }
+    public ResponseEntity<StockDTO> createStock(@Valid @RequestBody StockDTO stockDTO) throws URISyntaxException {
+        if (stockDTO.getId() == null) {
+            throw new BadRequestAlertException("A new stock cannot already have an ID");
+        }
+        StockDTO result = stockService.save(stockDTO);
+        return ResponseEntity.created(new URI("/api/stocks/" + result.getId())).body(result);
+    }
+
+    public StockDTO getStock(@PathVariable Long id) {
+        Optional<StockDTO> stockDTO = stockService.findOne(id);
+        return (stockDTO.orElse(null));
+    }
+    public StockDTO saleStock(Long id, Long productid, BigDecimal totalcount){
+        StockDTO stockDTO=new StockDTO();
+        stockDTO.id=id;
+        stockDTO.productid=productid;
+        stockDTO.totalcount=totalcount;
+        return stockDTO;
+
+    }
+    public StockDTO StockDTOTemp(Long id,Long productid,BigDecimal totalcount){
+        StockDTO stockDTO=new StockDTO();
+        stockDTO.id=id;
+        stockDTO.productid=productid;
+        stockDTO.totalcount=totalcount;
+        return stockDTO;
+
     }
 
     /**
@@ -42,6 +77,11 @@ public class SaleResource {
             throw new BadRequestAlertException("A new sale cannot already have an ID");
         }
         SaleDTO result = saleService.save(saleDTO);
+
+        StockDTO tempstockDTO=getStock(saleDTO.stocksale.productId);
+
+        createStock(saleStock(saleDTO.stocksale.productId, saleDTO.stocksale.productId,tempstockDTO.totalcount.subtract( saleDTO.stocksale.getCount())));
+        System.out.println(saleDTO.getProducts().stream().count());
         return ResponseEntity.created(new URI("/api/sales/" + result.getId())).body(result);
     }
 
@@ -96,8 +136,12 @@ public class SaleResource {
      * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
      */
     @DeleteMapping("/sales/{id}")
-    public ResponseEntity<Void> deleteSale(@PathVariable Long id) {
-        saleService.delete(id);
+    public ResponseEntity<Void> deleteSale(@PathVariable Long id) throws URISyntaxException {
+
+        StockDTO tempstockDTO=getStock(getSale(id).getBody().stocksale.productId);
+
+        createStock(saleStock(getSale(id).getBody().stocksale.productId, getSale(id).getBody().stocksale.productId,tempstockDTO.totalcount.add(getSale(id).getBody().stocksale.count)));
+          saleService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

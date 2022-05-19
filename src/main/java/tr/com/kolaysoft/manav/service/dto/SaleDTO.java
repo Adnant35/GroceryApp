@@ -18,7 +18,17 @@ public class SaleDTO implements Serializable {
 
     private Instant lastModifiedDate = Instant.now();
 
-    private Set<ProductSalePurchaseDTO> products;
+    public Set<ProductSalePurchaseDTO> products;
+
+    public ProductSalePurchaseDTO stocksale;
+
+    public ProductSalePurchaseDTO getStocksale() {
+        return stocksale;
+    }
+
+    public void setStocksale(ProductSalePurchaseDTO stocksale) {
+        this.stocksale = stocksale;
+    }
 
     public Long getId() {
         return id;
