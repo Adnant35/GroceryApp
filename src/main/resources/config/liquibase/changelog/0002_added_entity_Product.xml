@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="0002-1" author="jhipster">
+        <createTable tableName="product">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_product__name" />
+            </column>
+            <column name="unit" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="0002-2" author="jhipster">
+        <insert tableName="product">
+            <column name="id">1</column>
+            <column name="name">potatoes</column>
+            <column name="unit">KG</column>
+        </insert>
+    <insert tableName="product">
+        <column name="id">2</column>
+        <column name="name">tomatoes</column>
+        <column name="unit">KG</column>
+    </insert>
+        <insert tableName="product">
+            <column name="id">3</column>
+            <column name="name">aubergine</column>
+            <column name="unit">KG</column>
+        </insert>
+        <insert tableName="product">
+            <column name="id">4</column>
+            <column name="name">cucumber</column>
+            <column name="unit">KG</column>
+        </insert>
+        <insert tableName="product">
+            <column name="id">5</column>
+            <column name="name">apple</column>
+            <column name="unit">KG</column>
+        </insert>
+        <insert tableName="product">
+            <column name="id">6</column>
+            <column name="name">cherry</column>
+            <column name="unit">KG</column>
+        </insert>
+        <insert tableName="product">
+            <column name="id">7</column>
+            <column name="name">watermelon</column>
+            <column name="unit">KG</column>
+        </insert>
+        <insert tableName="product">
+            <column name="id">8</column>
+            <column name="name">orange</column>
+            <column name="unit">KG</column>
+        </insert>
+        <insert tableName="product">
+            <column name="id">9</column>
+            <column name="name">pear</column>
+            <column name="unit">KG</column>
+        </insert>
+        <insert tableName="product">
+            <column name="id">10</column>
+            <column name="name">parsley</column>
+            <column name="unit">BUNCH</column>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -13,12 +13,12 @@ We already have the checked records.
 Your aim is to:
 
 - [ ] add some unit tests, do not exceed %60 coverage.
-- [ ] find and solve bugs, if any
-- [ ] add some initial data, 10 grocery, 10 products, etc.
-- [ ] add purchase mechanism.
-- [ ] add stock tracking mechanism
+- [x] find and solve bugs, if any
+- [x] add some initial data, 10 grocery, 10 products, etc.
+- [x] add purchase mechanism.
+- [x] add stock tracking mechanism
 - [ ] add an endpoint to get top 3 product sold most in this month, for a grocery,
-- [ ] add swagger or spring-doc
+- [x] add swagger or spring-doc
 - [ ] add logging to all services and endpoints, aspect is preferred.
 
 

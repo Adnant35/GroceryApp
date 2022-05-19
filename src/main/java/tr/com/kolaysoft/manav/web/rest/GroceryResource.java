@@ -41,7 +41,7 @@ public class GroceryResource {
      */
     @PostMapping("/groceries")
     public ResponseEntity<GroceryDTO> createGrocery(@Valid @RequestBody GroceryDTO groceryDTO) throws URISyntaxException {
-        if (groceryDTO.getId() != null) {
+        if (groceryDTO.getId() == null) {
             throw new BadRequestAlertException("A new grocery cannot already have an ID");
         }
         GroceryDTO result = groceryService.save(groceryDTO);

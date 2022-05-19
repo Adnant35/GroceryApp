@@ -38,7 +38,7 @@ public class ProductResource {
      */
     @PostMapping("/products")
     public ResponseEntity<ProductDTO> createProduct(@Valid @RequestBody ProductDTO productDTO) throws URISyntaxException {
-        if (productDTO.getId() != null) {
+        if (productDTO.getId() == null) {
             throw new BadRequestAlertException("A new product cannot already have an ID");
         }
         ProductDTO result = productService.save(productDTO);

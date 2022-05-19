@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="0004-1" author="jhipster">
+        <createTable tableName="sale_product">
+            <column name="sale_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="product_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="count" type="decimal(21,2)">
+                <constraints nullable="false" />
+            </column>
+            <column name="price" type="decimal(21,2)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="0004-2" author="jhipster">
+        <insert tableName="sale_product">
+            <column name="product_id">1</column>
+            <column name="sale_id">1</column>
+            <column name="count">1</column>
+            <column name="price">10</column>
+        </insert>
+        <insert tableName="sale_product">
+            <column name="product_id">2</column>
+            <column name="sale_id">2</column>
+            <column name="count">2</column>
+            <column name="price">20</column>
+        </insert>
+        <insert tableName="sale_product">
+            <column name="product_id">3</column>
+            <column name="sale_id">3</column>
+            <column name="count">3</column>
+            <column name="price">40</column>
+        </insert>
+        <insert tableName="sale_product">
+            <column name="product_id">4</column>
+            <column name="sale_id">4</column>
+            <column name="count">4</column>
+            <column name="price">40</column>
+        </insert>
+        <insert tableName="sale_product">
+            <column name="product_id">4</column>
+            <column name="sale_id">5</column>
+            <column name="count">5</column>
+            <column name="price">50</column>
+        </insert>
+        <insert tableName="sale_product">
+            <column name="product_id">4</column>
+            <column name="sale_id">6</column>
+            <column name="count">6</column>
+            <column name="price">60</column>
+        </insert>
+        <insert tableName="sale_product">
+            <column name="product_id">7</column>
+            <column name="sale_id">7</column>
+            <column name="count">7</column>
+            <column name="price">70</column>
+        </insert>
+        <insert tableName="sale_product">
+            <column name="product_id">8</column>
+            <column name="sale_id">8</column>
+            <column name="count">30</column>
+            <column name="price">80</column>
+        </insert>
+        <insert tableName="sale_product">
+            <column name="product_id">9</column>
+            <column name="sale_id">9</column>
+            <column name="count">9</column>
+            <column name="price">90</column>
+        </insert>
+        <insert tableName="sale_product">
+            <column name="product_id">10</column>
+            <column name="sale_id">10</column>
+            <column name="count">10</column>
+            <column name="price">100</column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

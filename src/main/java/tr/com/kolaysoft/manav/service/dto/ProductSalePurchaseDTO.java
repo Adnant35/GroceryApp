@@ -7,13 +7,13 @@ import java.util.Objects;
 
 public class ProductSalePurchaseDTO implements Serializable {
 
-    private Long productId;
+    public Long productId;
 
     @NotNull
-    private BigDecimal count;
+    public BigDecimal count;
 
     @NotNull
-    private BigDecimal price;
+    public BigDecimal price;
 
     public Long getProductId() {
         return productId;
